@@ -234,6 +234,62 @@
     .mfg-grid{ grid-template-columns:1fr; }
   }
 
+  /* ===== Rolling Product Belt ===== */
+  .roll-viewport{
+    position:relative; z-index:2; overflow:hidden; width:100%;
+    margin-top:56px; padding:30px 0 40px;
+    -webkit-mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+    mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  }
+  .roll-track{
+    display:flex; align-items:center; gap:22px; width:max-content;
+    animation:roll-x 46s linear infinite;
+  }
+  .roll-viewport:hover .roll-track{ animation-play-state:paused; }
+  @keyframes roll-x{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+
+  .roll-card{
+    position:relative; flex:0 0 132px; height:172px; border-radius:18px; overflow:hidden;
+    background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+    border:1px solid var(--line); cursor:default;
+    transition:flex-basis .5s cubic-bezier(.2,.8,.2,1), height .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease, border-color .5s ease, z-index 0s;
+  }
+  .roll-card img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    -webkit-mask-image:radial-gradient(ellipse 68% 65% at center, black 58%, transparent 92%);
+    mask-image:radial-gradient(ellipse 68% 65% at center, black 58%, transparent 92%);
+    transition:transform .6s ease;
+  }
+  .roll-card:hover{
+    flex:0 0 260px; height:320px; z-index:20;
+    box-shadow:0 40px 80px -18px rgba(240,169,78,0.5);
+    border-color:rgba(240,169,78,0.4);
+  }
+  .roll-card:hover img{ transform:scale(1.1); }
+
+  .roll-info{
+    position:absolute; left:0; right:0; bottom:0; padding:16px 14px;
+    background:linear-gradient(0deg, rgba(6,7,9,0.92), transparent);
+    opacity:0; transform:translateY(8px);
+    transition:opacity .4s ease .1s, transform .4s ease .1s;
+  }
+  .roll-card:hover .roll-info{ opacity:1; transform:translateY(0); }
+  .roll-info .name{ font-family:'Unbounded',sans-serif; font-size:14px; font-weight:600; color:#fff; }
+  .roll-info .sub{ font-size:11.5px; color:var(--ink-dim); margin-top:3px; }
+
+  .roll-badge{
+    position:absolute; top:10px; left:10px; width:26px; height:26px; border-radius:50%;
+    background:rgba(240,169,78,0.15); border:1px solid rgba(240,169,78,0.4);
+    display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .3s ease .15s;
+  }
+  .roll-card:hover .roll-badge{ opacity:1; }
+  .roll-badge svg{ width:12px; height:12px; }
+
+  @media (max-width:600px){
+    .roll-card{ flex-basis:104px; height:140px; }
+    .roll-card:hover{ flex-basis:190px; height:240px; }
+  }
+
   /* ===== PREMIUM PRODUCT SHOWCASE ===== */
   .ps-section{
     position:relative; padding:130px 0 110px; overflow:hidden;
@@ -265,7 +321,7 @@
     position:relative; z-index:2; display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
     margin-top:64px; perspective:1400px;
   }
-  .ps-grid .p-card:nth-child(5){ grid-column:2 / span 1; }
+  .ps-grid .p-card:nth-child(5){}
   @media (min-width:901px){
     .ps-grid{ grid-template-columns:repeat(4,1fr); }
   }
@@ -279,6 +335,13 @@
     position:relative; border-radius:24px; background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
     backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.07);
     padding:26px 20px 22px; height:100%; overflow:hidden;
+  }
+  .p-render-photo{
+    width:150px; height:190px; object-fit:cover; border-radius:14px;
+    animation:p-float 6s ease-in-out infinite;
+    -webkit-mask-image:radial-gradient(ellipse 62% 60% at center, black 60%, transparent 92%);
+    mask-image:radial-gradient(ellipse 62% 60% at center, black 60%, transparent 92%);
+    filter:drop-shadow(0 14px 18px rgba(0,0,0,0.5));
   }
   .p-stage{
     position:relative; height:190px; display:flex; align-items:center; justify-content:center;
@@ -554,219 +617,200 @@
       <p class="ps-tagline reveal"><b>"Packaging That Builds Trust."</b></p>
     </div>
 
-    <div class="ps-grid" id="psGrid">
-
-      <div class="p-card" data-ptilt>
-        <div class="p-card-inner">
-          <div class="p-sheen"></div>
-          <div class="p-stage">
-            <svg class="p-render" viewBox="0 0 140 210" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#7FC4E8"/>
-                  <stop offset="14%" stop-color="#F8FDFF"/>
-                  <stop offset="30%" stop-color="#BFE6F5"/>
-                  <stop offset="55%" stop-color="#6FB8DE"/>
-                  <stop offset="80%" stop-color="#2E6E96"/>
-                  <stop offset="100%" stop-color="#1A4A66"/>
-                </linearGradient>
-                <linearGradient id="g1r" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
-                  <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-                </linearGradient>
-                <filter id="blur1"><feGaussianBlur stdDeviation="3.2"/></filter>
-              </defs>
-              <ellipse cx="70" cy="196" rx="42" ry="9" fill="#000000" opacity="0.35" filter="url(#blur1)"/>
-              <path d="M24 16H116L104 188H36L24 16Z" fill="url(#g1)"/>
-              <path d="M24 16H116L104 188H36L24 16Z" fill="none" stroke="#F8FDFF" stroke-width="1.4" opacity="0.7"/>
-              <ellipse cx="70" cy="16" rx="46" ry="9" fill="url(#g1r)" stroke="#EAF7FD" stroke-width="1.6"/>
-              <ellipse cx="70" cy="16" rx="46" ry="9" fill="none" stroke="#1A4A66" stroke-width="1" opacity="0.25"/>
-              <path d="M38 26 L32 172" stroke="#ffffff" stroke-width="7" opacity="0.55" stroke-linecap="round" filter="url(#blur1)"/>
-              <path d="M96 40 L90 160" stroke="#ffffff" stroke-width="3" opacity="0.3" stroke-linecap="round" filter="url(#blur1)"/>
-            </svg>
-          </div>
-          <div class="p-glow"></div>
-        </div>
-        <div class="p-caption"><div class="name">PET Cups</div><div class="sub">Crystal-clear grades</div></div>
+    <div class="roll-viewport">
+      <div class="roll-track">
+      <div class="roll-card">
+        <img src="images/12oz.jpg" alt="12oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">12oz PET Cup</div><div class="sub">Crystal-clear grade</div></div>
       </div>
-
-      <div class="p-card" data-ptilt>
-        <div class="p-card-inner">
-          <div class="p-sheen"></div>
-          <div class="p-stage">
-            <svg class="p-render" viewBox="0 0 140 210" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <radialGradient id="g2" cx="38%" cy="30%" r="75%">
-                  <stop offset="0%" stop-color="#FBFEFF"/>
-                  <stop offset="35%" stop-color="#CDEBF6"/>
-                  <stop offset="70%" stop-color="#5FA9D2"/>
-                  <stop offset="100%" stop-color="#245C80"/>
-                </radialGradient>
-                <filter id="blur2"><feGaussianBlur stdDeviation="3"/></filter>
-              </defs>
-              <ellipse cx="70" cy="140" rx="52" ry="12" fill="#000000" opacity="0.32" filter="url(#blur2)"/>
-              <ellipse cx="70" cy="108" rx="58" ry="28" fill="url(#g2)"/>
-              <ellipse cx="70" cy="108" rx="58" ry="28" fill="none" stroke="#1A4A66" stroke-width="1" opacity="0.25"/>
-              <ellipse cx="70" cy="108" rx="30" ry="13" fill="none" stroke="#F4FBFD" stroke-width="1.6" opacity="0.8"/>
-              <path d="M28 100 Q45 88 70 96" stroke="#ffffff" stroke-width="5" opacity="0.6" fill="none" stroke-linecap="round" filter="url(#blur2)"/>
-              <rect x="60" y="94" width="20" height="10" rx="4" fill="#F4FBFD" opacity="0.9"/>
-            </svg>
-          </div>
-          <div class="p-glow"></div>
-        </div>
-        <div class="p-caption"><div class="name">PET Lids</div><div class="sub">Leak-resistant seal</div></div>
+      <div class="roll-card">
+        <img src="images/product-16oz-crop.jpg" alt="16oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">16oz PET Cup</div><div class="sub">Sami PET</div></div>
       </div>
-
-      <div class="p-card" data-ptilt>
-        <div class="p-card-inner">
-          <div class="p-sheen"></div>
-          <div class="p-stage">
-            <svg class="p-render" viewBox="0 0 140 210" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#6FB8DE"/>
-                  <stop offset="16%" stop-color="#F8FDFF"/>
-                  <stop offset="34%" stop-color="#BFE6F5"/>
-                  <stop offset="60%" stop-color="#4E93BE"/>
-                  <stop offset="100%" stop-color="#1A4A66"/>
-                </linearGradient>
-                <linearGradient id="g3liq" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#DDF1FA" stop-opacity="0.9"/>
-                  <stop offset="100%" stop-color="#3D8CBE" stop-opacity="0.55"/>
-                </linearGradient>
-                <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
-              </defs>
-              <ellipse cx="70" cy="194" rx="38" ry="8" fill="#000000" opacity="0.35" filter="url(#blur3)"/>
-              <path d="M32 12H108L102 186H38L32 12Z" fill="url(#g3)"/>
-              <path d="M32 12H108L102 186H38L32 12Z" fill="none" stroke="#F8FDFF" stroke-width="1.4" opacity="0.7"/>
-              <path d="M38 128L36 186H104L102 128Z" fill="url(#g3liq)"/>
-              <ellipse cx="70" cy="128" rx="32" ry="6" fill="#EAF7FD" opacity="0.7"/>
-              <path d="M42 26L38 178" stroke="#ffffff" stroke-width="6" opacity="0.5" stroke-linecap="round" filter="url(#blur3)"/>
-            </svg>
-          </div>
-          <div class="p-glow"></div>
-        </div>
-        <div class="p-caption"><div class="name">Juice Glasses</div><div class="sub">Straight-wall clarity</div></div>
+      <div class="roll-card">
+        <img src="images/4oz.jpg" alt="4oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">4oz PET Cup</div><div class="sub">Compact serving</div></div>
       </div>
-
-      <div class="p-card" data-ptilt>
-        <div class="p-card-inner">
-          <div class="p-sheen"></div>
-          <div class="p-stage">
-            <svg class="p-render" viewBox="0 0 140 210" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g4" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#5FA9D2"/>
-                  <stop offset="18%" stop-color="#FBFEFF"/>
-                  <stop offset="40%" stop-color="#E7F6FC"/>
-                  <stop offset="100%" stop-color="#8FC7E4"/>
-                </linearGradient>
-                <linearGradient id="g4lid" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#F8FDFF"/><stop offset="100%" stop-color="#BFE6F5"/>
-                </linearGradient>
-                <filter id="blur4"><feGaussianBlur stdDeviation="3"/></filter>
-              </defs>
-              <ellipse cx="70" cy="182" rx="46" ry="10" fill="#000000" opacity="0.32" filter="url(#blur4)"/>
-              <path d="M26 62H114L106 176H34L26 62Z" fill="url(#g4)"/>
-              <path d="M26 62H114L106 176H34L26 62Z" fill="none" stroke="#1A4A66" stroke-width="1" opacity="0.2"/>
-              <ellipse cx="70" cy="62" rx="44" ry="10" fill="#3D8CBE" opacity="0.9"/>
-              <ellipse cx="70" cy="44" rx="50" ry="12" fill="url(#g4lid)" stroke="#CDEBF6" stroke-width="1.6"/>
-              <ellipse cx="70" cy="44" rx="26" ry="6" fill="none" stroke="#8FC7E4" stroke-width="1.4" opacity="0.8"/>
-              <path d="M32 68 L28 168" stroke="#ffffff" stroke-width="4" opacity="0.4" stroke-linecap="round" filter="url(#blur4)"/>
-            </svg>
-          </div>
-          <div class="p-glow"></div>
-        </div>
-        <div class="p-caption"><div class="name">Ice Cream Cups</div><div class="sub">Insulated, food-safe</div></div>
+      <div class="roll-card">
+        <img src="images/3oz.jpg" alt="3oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">3oz PET Cup</div><div class="sub">Mini portion</div></div>
       </div>
-
-      <div class="p-card" data-ptilt>
-        <div class="p-card-inner">
-          <div class="p-sheen"></div>
-          <div class="p-stage">
-            <svg class="p-render" viewBox="0 0 140 210" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g5" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#6FB8DE"/>
-                  <stop offset="16%" stop-color="#F8FDFF"/>
-                  <stop offset="40%" stop-color="#CDEBF6"/>
-                  <stop offset="100%" stop-color="#2E6E96"/>
-                </linearGradient>
-                <filter id="blur5"><feGaussianBlur stdDeviation="3"/></filter>
-              </defs>
-              <ellipse cx="70" cy="180" rx="44" ry="10" fill="#000000" opacity="0.32" filter="url(#blur5)"/>
-              <path d="M30 74Q70 100 110 74L100 168Q70 182 40 168Z" fill="url(#g5)"/>
-              <path d="M30 74Q70 100 110 74L100 168Q70 182 40 168Z" fill="none" stroke="#1A4A66" stroke-width="1" opacity="0.2"/>
-              <ellipse cx="70" cy="72" rx="42" ry="11" fill="#F8FDFF" stroke="#CDEBF6" stroke-width="1.6"/>
-              <ellipse cx="70" cy="72" rx="22" ry="5" fill="none" stroke="#8FC7E4" stroke-width="1.2" opacity="0.7"/>
-              <path d="M40 84 L36 158" stroke="#ffffff" stroke-width="5" opacity="0.5" stroke-linecap="round" filter="url(#blur5)"/>
-            </svg>
-          </div>
-          <div class="p-glow"></div>
-        </div>
-        <div class="p-caption"><div class="name">Yogurt Bowls</div><div class="sub">Peel-seal ready</div></div>
+      <div class="roll-card">
+        <img src="images/250ml-stack.jpg" alt="250ml PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml PET Cup</div><div class="sub">With flat lid</div></div>
       </div>
-
-      <div class="p-card" data-ptilt>
-        <div class="p-card-inner">
-          <div class="p-sheen"></div>
-          <div class="p-stage">
-            <svg class="p-render" viewBox="0 0 140 210" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g6" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#5FA9D2"/>
-                  <stop offset="20%" stop-color="#FBFEFF"/>
-                  <stop offset="45%" stop-color="#E7F6FC"/>
-                  <stop offset="100%" stop-color="#7FC4E8"/>
-                </linearGradient>
-                <filter id="blur6"><feGaussianBlur stdDeviation="2.6"/></filter>
-              </defs>
-              <ellipse cx="70" cy="148" rx="26" ry="7" fill="#000000" opacity="0.3" filter="url(#blur6)"/>
-              <path d="M50 96H90L86 142H54L50 96Z" fill="url(#g6)"/>
-              <path d="M50 96H90L86 142H54L50 96Z" fill="none" stroke="#1A4A66" stroke-width="0.8" opacity="0.2"/>
-              <ellipse cx="70" cy="96" rx="22" ry="6" fill="#F8FDFF" stroke="#CDEBF6" stroke-width="1.4"/>
-              <path d="M56 102 L54 134" stroke="#ffffff" stroke-width="3" opacity="0.5" stroke-linecap="round" filter="url(#blur6)"/>
-            </svg>
-          </div>
-          <div class="p-glow"></div>
-        </div>
-        <div class="p-caption"><div class="name">Sauce Dip Cups</div><div class="sub">Portion-perfect</div></div>
+      <div class="roll-card">
+        <img src="images/300ml-lid.jpg" alt="300ml PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">300ml PET Cup</div><div class="sub">With lid, boxed set</div></div>
       </div>
-
-      <div class="p-card" data-ptilt>
-        <div class="p-card-inner">
-          <div class="p-sheen"></div>
-          <div class="p-stage">
-            <svg class="p-render" viewBox="0 0 140 210" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g7" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#4E93BE"/>
-                  <stop offset="14%" stop-color="#F8FDFF"/>
-                  <stop offset="32%" stop-color="#BFE6F5"/>
-                  <stop offset="58%" stop-color="#5FA9D2"/>
-                  <stop offset="100%" stop-color="#1A4A66"/>
-                </linearGradient>
-                <filter id="blur7"><feGaussianBlur stdDeviation="3"/></filter>
-              </defs>
-              <ellipse cx="70" cy="198" rx="42" ry="9" fill="#000000" opacity="0.35" filter="url(#blur7)"/>
-              <path d="M26 28H114L102 192H38L26 28Z" fill="url(#g7)"/>
-              <path d="M26 28H114L102 192H38L26 28Z" fill="none" stroke="#F8FDFF" stroke-width="1.2" opacity="0.6"/>
-              <ellipse cx="70" cy="28" rx="44" ry="9" fill="none" stroke="#CDEBF6" stroke-width="1.6"/>
-              <path d="M32 44 Q70 60 108 44" stroke="#ffffff" stroke-width="3" opacity="0.55" fill="none"/>
-              <path d="M36 76 Q70 92 104 76" stroke="#ffffff" stroke-width="3" opacity="0.4" fill="none"/>
-              <path d="M40 108 Q70 122 100 108" stroke="#ffffff" stroke-width="2.4" opacity="0.3" fill="none"/>
-              <line x1="96" y1="2" x2="78" y2="86" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
-              <line x1="96" y1="2" x2="78" y2="86" stroke="#4E93BE" stroke-width="2" stroke-linecap="round"/>
-              <path d="M40 40 L36 168" stroke="#ffffff" stroke-width="5" opacity="0.4" stroke-linecap="round" filter="url(#blur7)"/>
-            </svg>
-          </div>
-          <div class="p-glow"></div>
-        </div>
-        <div class="p-caption"><div class="name">Slush Glasses</div><div class="sub">Frost-ready walls</div></div>
+      <div class="roll-card">
+        <img src="images/210ml-printed.jpg" alt="210ml Soft Drink Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">210ml Soft Drink Cup</div><div class="sub">Printed design</div></div>
       </div>
-
+      <div class="roll-card">
+        <img src="images/210ml-plain.jpg" alt="210ml PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">210ml PET Cup</div><div class="sub">Plain, clear</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/250ml-blue.jpg" alt="250ml Soft Drink Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Soft Drink Cup</div><div class="sub">Blue splash print</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/250ml-red.jpg" alt="250ml Soft Drink Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Soft Drink Cup</div><div class="sub">Red bubble print</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/milky-4oz.jpg" alt="4oz Milky Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">4oz Milky Cup</div><div class="sub">Opaque PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/milky-6oz.jpg" alt="6oz Milky Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">6oz Milky Cup</div><div class="sub">Opaque PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/200ml-container.jpg" alt="200ml Container">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">200ml Container</div><div class="sub">Round tub, with lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/60ml-dessert.jpg" alt="60ml Dessert Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">60ml Dessert Cup</div><div class="sub">Fruit-print lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/80ml-sauce.jpg" alt="80ml Sauce Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">80ml Sauce Cup</div><div class="sub">Portion-perfect</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/40ml-sauce.jpg" alt="40ml Sauce Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">40ml Sauce Cup</div><div class="sub">With lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/30ml-sauce.jpg" alt="30ml Sauce Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">30ml Sauce Cup</div><div class="sub">With lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/sauce-tray.jpg" alt="Sauce Tray">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">Sauce Tray</div><div class="sub">Black, with lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/sip-lid.jpg" alt="Sip Lid">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">Sip Lid</div><div class="sub">PET, leak-resistant</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/12oz.jpg" alt="12oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">12oz PET Cup</div><div class="sub">Crystal-clear grade</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/product-16oz-crop.jpg" alt="16oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">16oz PET Cup</div><div class="sub">Sami PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/4oz.jpg" alt="4oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">4oz PET Cup</div><div class="sub">Compact serving</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/3oz.jpg" alt="3oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">3oz PET Cup</div><div class="sub">Mini portion</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/250ml-stack.jpg" alt="250ml PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml PET Cup</div><div class="sub">With flat lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/300ml-lid.jpg" alt="300ml PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">300ml PET Cup</div><div class="sub">With lid, boxed set</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/210ml-printed.jpg" alt="210ml Soft Drink Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">210ml Soft Drink Cup</div><div class="sub">Printed design</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/210ml-plain.jpg" alt="210ml PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">210ml PET Cup</div><div class="sub">Plain, clear</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/250ml-blue.jpg" alt="250ml Soft Drink Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Soft Drink Cup</div><div class="sub">Blue splash print</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/250ml-red.jpg" alt="250ml Soft Drink Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Soft Drink Cup</div><div class="sub">Red bubble print</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/milky-4oz.jpg" alt="4oz Milky Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">4oz Milky Cup</div><div class="sub">Opaque PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/milky-6oz.jpg" alt="6oz Milky Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">6oz Milky Cup</div><div class="sub">Opaque PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/200ml-container.jpg" alt="200ml Container">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">200ml Container</div><div class="sub">Round tub, with lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/60ml-dessert.jpg" alt="60ml Dessert Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">60ml Dessert Cup</div><div class="sub">Fruit-print lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/80ml-sauce.jpg" alt="80ml Sauce Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">80ml Sauce Cup</div><div class="sub">Portion-perfect</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/40ml-sauce.jpg" alt="40ml Sauce Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">40ml Sauce Cup</div><div class="sub">With lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/30ml-sauce.jpg" alt="30ml Sauce Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">30ml Sauce Cup</div><div class="sub">With lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/sauce-tray.jpg" alt="Sauce Tray">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">Sauce Tray</div><div class="sub">Black, with lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/sip-lid.jpg" alt="Sip Lid">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">Sip Lid</div><div class="sub">PET, leak-resistant</div></div>
+      </div>
+      </div>
     </div>
-  </div>
 </section>
 
 <section class="drinks-section" style="padding-top:20px; padding-bottom:70px;">
@@ -1121,9 +1165,9 @@
     gsap.registerPlugin(ScrollTrigger);
     gsap.to('.ps-logo', { opacity:1, y:0, duration:.8, ease:'power2.out',
       scrollTrigger:{ trigger:'.ps-section', start:'top 75%' } });
-    gsap.from('#psGrid .p-card', {
-      opacity:0, y:60, scale:0.92, duration:0.9, stagger:0.12, ease:'power3.out',
-      scrollTrigger:{ trigger:'#psGrid', start:'top 85%' }
+    gsap.from('.roll-viewport', {
+      opacity:0, y:40, duration:1, ease:'power3.out',
+      scrollTrigger:{ trigger:'.roll-viewport', start:'top 88%' }
     });
     gsap.to('.ps-blob-a', { y:80, ease:'none',
       scrollTrigger:{ trigger:'.ps-section', start:'top bottom', end:'bottom top', scrub:1 } });
