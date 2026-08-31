@@ -243,7 +243,7 @@
   }
   .roll-track{
     display:flex; align-items:center; gap:22px; width:max-content;
-    animation:roll-x 46s linear infinite;
+    animation:roll-x 120s linear infinite;
   }
   .roll-viewport:hover .roll-track{ animation-play-state:paused; }
   @keyframes roll-x{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
@@ -260,12 +260,12 @@
     mask-image:radial-gradient(ellipse 68% 65% at center, black 58%, transparent 92%);
     transition:transform .6s ease;
   }
-  .roll-card:hover{
+  .roll-card:hover, .roll-card.expanded{
     flex:0 0 260px; height:320px; z-index:20;
     box-shadow:0 40px 80px -18px rgba(240,169,78,0.5);
     border-color:rgba(240,169,78,0.4);
   }
-  .roll-card:hover img{ transform:scale(1.1); }
+  .roll-card:hover img, .roll-card.expanded img{ transform:scale(1.1); }
 
   .roll-info{
     position:absolute; left:0; right:0; bottom:0; padding:16px 14px;
@@ -273,7 +273,7 @@
     opacity:0; transform:translateY(8px);
     transition:opacity .4s ease .1s, transform .4s ease .1s;
   }
-  .roll-card:hover .roll-info{ opacity:1; transform:translateY(0); }
+  .roll-card:hover .roll-info, .roll-card.expanded .roll-info{ opacity:1; transform:translateY(0); }
   .roll-info .name{ font-family:'Unbounded',sans-serif; font-size:14px; font-weight:600; color:#fff; }
   .roll-info .sub{ font-size:11.5px; color:var(--ink-dim); margin-top:3px; }
 
@@ -282,12 +282,12 @@
     background:rgba(240,169,78,0.15); border:1px solid rgba(240,169,78,0.4);
     display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .3s ease .15s;
   }
-  .roll-card:hover .roll-badge{ opacity:1; }
+  .roll-card:hover .roll-badge, .roll-card.expanded .roll-badge{ opacity:1; }
   .roll-badge svg{ width:12px; height:12px; }
 
   @media (max-width:600px){
     .roll-card{ flex-basis:104px; height:140px; }
-    .roll-card:hover{ flex-basis:190px; height:240px; }
+    .roll-card:hover, .roll-card.expanded{ flex-basis:190px; height:240px; }
   }
 
   /* ===== PREMIUM PRODUCT SHOWCASE ===== */
@@ -619,6 +619,306 @@
 
     <div class="roll-viewport">
       <div class="roll-track">
+      <div class="roll-card">
+        <img src="images/z-1-5-oz-dip-black.jpg" alt="1.5oz Dip Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">1.5oz Dip Cup</div><div class="sub">Black</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-1-5-oz-white-dip.jpg" alt="1.5oz Dip Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">1.5oz Dip Cup</div><div class="sub">White</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-10-oz-sami-pet.jpg" alt="10oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">10oz PET Cup</div><div class="sub">Sami PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-12-oz-ring-glass.jpg" alt="12oz Ring Glass">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">12oz Ring Glass</div><div class="sub">Textured PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-12-oz-semi-pet.jpg" alt="12oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">12oz PET Cup</div><div class="sub">Semi PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-12-14-16-grm-lid.jpg" alt="12-14-16gm Lid">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">12-14-16gm Lid</div><div class="sub">Universal fit</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-14-oz-relax-time.jpg" alt="14oz Relax Time">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">14oz Relax Time</div><div class="sub">Printed cup</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-150-grm-cup.jpg" alt="150gm Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">150gm Cup</div><div class="sub">PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-16-oz-ring-glass.jpg" alt="16oz Ring Glass">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">16oz Ring Glass</div><div class="sub">Textured PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-16-oz-semi-pet.jpg" alt="16oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">16oz PET Cup</div><div class="sub">Semi PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-16-oz-semi-pet-with-dm-lid.jpg" alt="16oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">16oz PET Cup</div><div class="sub">With dome lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-16-oz-virgin-pure-pet.jpg" alt="16oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">16oz PET Cup</div><div class="sub">Virgin Pure PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-18-oz-virgin-pure-pet.jpg" alt="18oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">18oz PET Cup</div><div class="sub">Virgin Pure PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-200-grm-cup-pet.jpg" alt="200gm Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">200gm Cup</div><div class="sub">PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-200-grm-dubbi-lining.jpg" alt="200gm Dubbi">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">200gm Dubbi</div><div class="sub">Lined container</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-210-ml-milky.jpg" alt="210ml Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">210ml Cup</div><div class="sub">Milky</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-210-ml-print.jpg" alt="210ml Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">210ml Cup</div><div class="sub">Printed</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-210-ml-transparent.jpg" alt="210ml Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">210ml Cup</div><div class="sub">Transparent</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-250-ml-bowl-black.jpg" alt="250ml Bowl">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Bowl</div><div class="sub">Black</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-250-ml-bowl-semi.jpg" alt="250ml Bowl">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Bowl</div><div class="sub">Semi PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-250-ml-crystal.jpg" alt="250ml Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Cup</div><div class="sub">Crystal clear</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-250-ml-dubbi-plane.jpg" alt="250ml Dubbi">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Dubbi</div><div class="sub">Plain container</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-3-oz-crystal.jpg" alt="3oz Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">3oz Cup</div><div class="sub">Crystal clear</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-3-oz-milky.jpg" alt="3oz Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">3oz Cup</div><div class="sub">Milky</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-330-ml-lid.jpg" alt="330ml Lid">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">330ml Lid</div><div class="sub">PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-330-ml-lid-with-cut.jpg" alt="330ml Lid">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">330ml Lid</div><div class="sub">With straw cut</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-330-ml-ring-glass.jpg" alt="330ml Ring Glass">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">330ml Ring Glass</div><div class="sub">Textured PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-6-oz-crystal.jpg" alt="6oz Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">6oz Cup</div><div class="sub">Crystal clear</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-6-oz-milky-lining.jpg" alt="6oz Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">6oz Cup</div><div class="sub">Milky lining</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-sip-lid-pure.jpg" alt="Sip Lid">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">Sip Lid</div><div class="sub">Pure PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-1-5-oz-dip-black.jpg" alt="1.5oz Dip Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">1.5oz Dip Cup</div><div class="sub">Black</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-1-5-oz-white-dip.jpg" alt="1.5oz Dip Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">1.5oz Dip Cup</div><div class="sub">White</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-10-oz-sami-pet.jpg" alt="10oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">10oz PET Cup</div><div class="sub">Sami PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-12-oz-ring-glass.jpg" alt="12oz Ring Glass">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">12oz Ring Glass</div><div class="sub">Textured PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-12-oz-semi-pet.jpg" alt="12oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">12oz PET Cup</div><div class="sub">Semi PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-12-14-16-grm-lid.jpg" alt="12-14-16gm Lid">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">12-14-16gm Lid</div><div class="sub">Universal fit</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-14-oz-relax-time.jpg" alt="14oz Relax Time">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">14oz Relax Time</div><div class="sub">Printed cup</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-150-grm-cup.jpg" alt="150gm Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">150gm Cup</div><div class="sub">PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-16-oz-ring-glass.jpg" alt="16oz Ring Glass">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">16oz Ring Glass</div><div class="sub">Textured PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-16-oz-semi-pet.jpg" alt="16oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">16oz PET Cup</div><div class="sub">Semi PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-16-oz-semi-pet-with-dm-lid.jpg" alt="16oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">16oz PET Cup</div><div class="sub">With dome lid</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-16-oz-virgin-pure-pet.jpg" alt="16oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">16oz PET Cup</div><div class="sub">Virgin Pure PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-18-oz-virgin-pure-pet.jpg" alt="18oz PET Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">18oz PET Cup</div><div class="sub">Virgin Pure PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-200-grm-cup-pet.jpg" alt="200gm Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">200gm Cup</div><div class="sub">PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-200-grm-dubbi-lining.jpg" alt="200gm Dubbi">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">200gm Dubbi</div><div class="sub">Lined container</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-210-ml-milky.jpg" alt="210ml Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">210ml Cup</div><div class="sub">Milky</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-210-ml-print.jpg" alt="210ml Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">210ml Cup</div><div class="sub">Printed</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-210-ml-transparent.jpg" alt="210ml Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">210ml Cup</div><div class="sub">Transparent</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-250-ml-bowl-black.jpg" alt="250ml Bowl">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Bowl</div><div class="sub">Black</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-250-ml-bowl-semi.jpg" alt="250ml Bowl">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Bowl</div><div class="sub">Semi PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-250-ml-crystal.jpg" alt="250ml Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Cup</div><div class="sub">Crystal clear</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-250-ml-dubbi-plane.jpg" alt="250ml Dubbi">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">250ml Dubbi</div><div class="sub">Plain container</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-3-oz-crystal.jpg" alt="3oz Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">3oz Cup</div><div class="sub">Crystal clear</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-3-oz-milky.jpg" alt="3oz Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">3oz Cup</div><div class="sub">Milky</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-330-ml-lid.jpg" alt="330ml Lid">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">330ml Lid</div><div class="sub">PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-330-ml-lid-with-cut.jpg" alt="330ml Lid">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">330ml Lid</div><div class="sub">With straw cut</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-330-ml-ring-glass.jpg" alt="330ml Ring Glass">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">330ml Ring Glass</div><div class="sub">Textured PET</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-6-oz-crystal.jpg" alt="6oz Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">6oz Cup</div><div class="sub">Crystal clear</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-6-oz-milky-lining.jpg" alt="6oz Cup">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">6oz Cup</div><div class="sub">Milky lining</div></div>
+      </div>
+      <div class="roll-card">
+        <img src="images/z-sip-lid-pure.jpg" alt="Sip Lid">
+        <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="roll-info"><div class="name">Sip Lid</div><div class="sub">Pure PET</div></div>
+      </div>
       <div class="roll-card">
         <img src="images/12oz.jpg" alt="12oz PET Cup">
         <div class="roll-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFCB7A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -1174,6 +1474,23 @@
     gsap.to('.ps-blob-b', { y:-60, ease:'none',
       scrollTrigger:{ trigger:'.ps-section', start:'top bottom', end:'bottom top', scrub:1 } });
   }
+
+  // Rolling belt — click/tap to open detail (touch-friendly alternative to hover)
+  (function(){
+    var rollCards = document.querySelectorAll('.roll-card');
+    var rollTrack = document.querySelector('.roll-track');
+    rollCards.forEach(function(card){
+      card.addEventListener('click', function(e){
+        var wasOpen = card.classList.contains('expanded');
+        rollCards.forEach(function(c){ c.classList.remove('expanded'); });
+        if(!wasOpen){ card.classList.add('expanded'); }
+        e.stopPropagation();
+      });
+    });
+    document.addEventListener('click', function(){
+      rollCards.forEach(function(c){ c.classList.remove('expanded'); });
+    });
+  })();
 
   // Mouse-follow 3D tilt for premium product cards
   var ptiltCards = document.querySelectorAll('[data-ptilt]');
