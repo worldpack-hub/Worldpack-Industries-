@@ -469,6 +469,7 @@
     background:rgba(255,255,255,0.06); font-family:'Inter',sans-serif; font-size:14.5px; color:var(--ink); margin-bottom:16px;
   }
   .quote-form select option{ background:#161719; color:var(--ink); }
+  .quote-form select optgroup{ background:#161719; color:var(--amber-bright); font-style:normal; font-weight:700; }
   .quote-form input::placeholder{ color:#6b6d72; }
   .quote-form button{ width:100%; justify-content:center; }
 
@@ -1341,24 +1342,80 @@
         <div class="quote-form">
           <label for="productSelect">Select Product</label>
           <select id="productSelect">
-            <option>Sami PET 8/9 oz</option>
-            <option>Sami PET 10 oz</option>
-            <option>Sami PET 12 oz</option>
-            <option>Sami PET 16 oz</option>
-            <option>Sami PET 18 oz</option>
-            <option>Virgin PET 8/9 oz</option>
-            <option>Virgin PET 10 oz</option>
-            <option>Virgin PET 12 oz</option>
-            <option>Virgin PET 16 oz</option>
-            <option>Virgin PET 18 oz</option>
-            <option>Dome Lid Cross</option>
-            <option>Dome Lid Type C</option>
-            <option>71 MM Lid</option>
-            <option>Flat Lid</option>
-            <option>Sip Lid</option>
-            <option>250 ML Bowl</option>
-            <option>Black Bowl</option>
-            <option>P1 Container</option>
+            <optgroup label="PET Cups">
+              <option>Sami PET 8/9 oz</option>
+              <option>Sami PET 10 oz</option>
+              <option>Sami PET 12 oz</option>
+              <option>Sami PET 16 oz</option>
+              <option>Sami PET 18 oz</option>
+              <option>Virgin PET 8/9 oz</option>
+              <option>Virgin PET 10 oz</option>
+              <option>Virgin PET 12 oz</option>
+              <option>Virgin PET 16 oz</option>
+              <option>Virgin PET 18 oz</option>
+              <option>3 oz PET Cup</option>
+              <option>4 oz PET Cup</option>
+              <option>6 oz Crystal Cup</option>
+              <option>12 oz Semi PET Cup</option>
+              <option>16 oz Semi PET Cup</option>
+              <option>16 oz Semi PET with Dome Lid</option>
+              <option>16 oz Virgin Pure PET</option>
+              <option>18 oz Virgin Pure PET</option>
+              <option>14 oz Relax Time Cup</option>
+              <option>150 gm Cup</option>
+              <option>200 gm Cup PET</option>
+              <option>250 ml Crystal Cup</option>
+              <option>250 ml PET Cup (with lid)</option>
+              <option>300 ml PET Cup (with lid)</option>
+            </optgroup>
+            <optgroup label="Milky Cups">
+              <option>3 oz Milky Cup</option>
+              <option>4 oz Milky Cup</option>
+              <option>6 oz Milky Lining Cup</option>
+            </optgroup>
+            <optgroup label="Ring Glass Cups">
+              <option>12 oz Ring Glass</option>
+              <option>16 oz Ring Glass</option>
+              <option>330 ml Ring Glass</option>
+            </optgroup>
+            <optgroup label="Soft Drink Cups">
+              <option>210 ml Printed Soft Drink Cup</option>
+              <option>210 ml Plain PET Cup</option>
+              <option>210 ml Milky Cup</option>
+              <option>210 ml Transparent Cup</option>
+              <option>250 ml Soft Drink Cup – Blue</option>
+              <option>250 ml Soft Drink Cup – Red</option>
+            </optgroup>
+            <optgroup label="Lids">
+              <option>Dome Lid Cross</option>
+              <option>Dome Lid Type C</option>
+              <option>71 MM Lid</option>
+              <option>Flat Lid</option>
+              <option>Sip Lid</option>
+              <option>Sip Lid Pure</option>
+              <option>330 ml Lid</option>
+              <option>330 ml Lid with Straw Cut</option>
+              <option>12-14-16 gm Universal Lid</option>
+            </optgroup>
+            <optgroup label="Bowls & Containers">
+              <option>250 ML Bowl</option>
+              <option>Black Bowl</option>
+              <option>250 ml Bowl – Black</option>
+              <option>250 ml Bowl – Semi PET</option>
+              <option>200 ml Container</option>
+              <option>200 gm Dubbi (Lined)</option>
+              <option>250 gm Dubbi (Plain)</option>
+              <option>P1 Container</option>
+            </optgroup>
+            <optgroup label="Dip &amp; Sauce Cups">
+              <option>1.5 oz Dip Cup – Black</option>
+              <option>1.5 oz Dip Cup – White</option>
+              <option>30 ml Sauce Cup</option>
+              <option>40 ml Sauce Cup</option>
+              <option>80 ml Sauce Cup</option>
+              <option>60 ml Dessert Cup</option>
+              <option>Sauce Tray</option>
+            </optgroup>
           </select>
           <label for="qtyInput">Quantity (approx.)</label>
           <input id="qtyInput" type="text" placeholder="e.g. 10,000 pcs">
